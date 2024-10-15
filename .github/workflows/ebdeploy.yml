@@ -8,7 +8,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      AWS_DEFAULT_REGION: "eu-west-2"
       DJANGO_CONFIGURATION: "Test"
     steps:
       - name: Checkout code
@@ -29,7 +28,7 @@ jobs:
           pytest
 
   deploy:
-    needs: [ test ] # Ensure correct indentation here
+    needs: [ test ] 
     runs-on: ubuntu-latest
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -49,4 +48,4 @@ jobs:
 
       - name: Deploy to Elastic Beanstalk
         run: |
-          eb deploy --staged --env my-env
+          eb deploy 
